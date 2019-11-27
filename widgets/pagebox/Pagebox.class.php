@@ -34,7 +34,14 @@ class Pagebox extends WP_Widget {
 	function widget($args, $instance) {
 		echo $args["before_widget"];
 		$page = $instance["page"] > 0 ? get_post($instance["page"]) : null;
-		if ($page != null) echo get_the_content(null, false, $page);
+
+		if ($page != null) {
+			// Required for anchor links to work
+			echo '<article id="' . $page->post_name . '">';
+			echo apply_filters("the_content", get_the_content(null, false, $page));
+			echo '</article>';
+		}
+
 		echo $args["after_widget"];
 	}
 
