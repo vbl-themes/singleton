@@ -55,12 +55,13 @@ section.emphasized {
 
 ul.menu {
 	float: right;
-	list-style-type: none;
+	display: flex;
 	margin: 0.5em;
-	padding: 0;
 }
 
 ul.menu li {
+	display: inline;
+	margin: 0 0.5em 0 0.5em;
 }
 
 ul.menu a {
