@@ -15,18 +15,14 @@
  * limitations under the License.
  */
 
-class ThemeSetup {
+class LinkAnchor {
 
-	function __invoke() {
-		$this->enablePostThumbnails();
-		$this->enableLinkAnchors();
+	function __construct() {
+		add_filter("nav_menu_link_attributes", array($this, "setAnchor"), 10, 3);
 	}
 
-	function enablePostThumbnails() {
-		add_theme_support("post-thumbnails");
-	}
-
-	function enableLinkAnchors() {
-		new LinkAnchor();
+	public function setAnchor($attributes, $item, $args) {
+		$attributes["href"] = "#" . trim(str_replace(get_site_url(), "", $attributes["href"]), "/");
+		return $attributes;
 	}
 }
