@@ -34,7 +34,6 @@ body {
 
 header {
 	background-color: #fffc;
-	padding: 5px;
 	display: none;
 }
 
@@ -42,15 +41,31 @@ header.sticky {
 	position: fixed;
 	display: block;
 	top: 0;
-	width: 100vw;
+	width: 100%;
 }
 
 section {
-	min-height: 250px;
+	mmargin: 1em;
 }
 
 section.emphasized {
 	background-color: #213275;
 	color: #fff;
+}
+
+ul.menu {
+	float: right;
+	list-style-type: none;
+	margin: 0.5em;
+	padding: 0;
+}
+
+ul.menu li {
+}
+
+ul.menu a {
+	color: blue;
+	text-decoration: none;
+	font-variant: all-small-caps;
 }
 
