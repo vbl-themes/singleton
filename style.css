@@ -44,8 +44,8 @@ header.sticky {
 	width: 100%;
 }
 
-section {
-	mmargin: 1em;
+article {
+	padding: 1em;
 }
 
 section.emphasized {
