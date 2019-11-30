@@ -28,7 +28,12 @@ class Pagebox extends WP_Widget {
 	}
 
 	function __invoke() {
+		$this->enqueueStylesScripts();
 		register_widget($this);
+	}
+
+	function enqueueStylesScripts() {
+		wp_enqueue_style(self::$widget_id, path2url(__FILE__, "Pagebox.css"));
 	}
 
 	function widget($args, $instance) {
@@ -37,7 +42,7 @@ class Pagebox extends WP_Widget {
 
 		if ($page != null) {
 			// Required for anchor links to work
-			echo '<article id="' . $page->post_name . '">';
+			echo '<article id="' . $page->post_name . '" class="' . $instance["style"] . '">';
 			echo apply_filters("the_content", get_the_content(null, false, $page));
 			echo '</article>';
 		}
@@ -49,6 +54,7 @@ class Pagebox extends WP_Widget {
 
 		$inst = $old_instance;
 		$inst["page"] = strip_tags($new_instance["page"]);
+		$inst["style"] = strip_tags($new_instance["style"]);
 		return $inst;
 	}
 
@@ -66,11 +72,28 @@ class Pagebox extends WP_Widget {
 				<option value="">--- Empty ---</option>
 
 				<?php foreach ($pages as $page): ?>
-					<option value="<?php echo $page->ID; ?>"<?php if ($instance["page"] == $page->ID) echo "selected" ?>>
+					<option
+						value="<?php echo $page->ID; ?>"<?php if ($instance["page"] == $page->ID) echo "selected" ?>>
 						<?php echo $page->post_title; ?>
 					</option>
 				<?php endforeach; ?>
 
+			</select>
+		</p>
+
+		<p>
+			<label
+				for="<?php echo $this->get_field_id("style"); ?>">Style:</label>
+
+			<select
+				name="<?php echo $this->get_field_name("style"); ?>"
+				id="<?php echo $this->get_field_id("style"); ?>">
+
+				<option value="">--- Empty ---</option>
+				<option
+					value="dark"<?php if ($instance["style"] == "dark") echo "selected" ?>>
+					Dark
+				</option>
 			</select>
 		</p>
 	<?php }
