@@ -20,6 +20,7 @@ class ThemeSetup {
 	function __invoke() {
 		$this->enablePostThumbnails();
 		$this->enableLinkAnchors();
+		$this->registerMenus();
 	}
 
 	function enablePostThumbnails() {
@@ -28,5 +29,10 @@ class ThemeSetup {
 
 	function enableLinkAnchors() {
 		new LinkAnchor();
+	}
+
+	function registerMenus() {
+		register_nav_menu("main-menu", "Main Menu");
+		register_nav_menu("hero-icons", "Hero Icons");
 	}
 }
