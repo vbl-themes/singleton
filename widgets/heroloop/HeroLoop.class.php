@@ -71,9 +71,11 @@ class HeroLoop extends WP_Widget {
 					<?php endfor; ?>
 				</p>
 
-				<p>
-					Icons
-				</p>
+				<?php wp_nav_menu(array(
+					"menu" => "Hero Icons",
+					"container" => null,
+				)) ?>>
+
 			</article>
 		<?php endforeach;
 

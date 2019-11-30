@@ -9,5 +9,5 @@
 </head>
 <body <?php body_class(); ?>>
 <header>
-	<?php wp_nav_menu(); ?>
+	<?php wp_nav_menu(array("menu" => "Main Menu")); ?>
 </header>
