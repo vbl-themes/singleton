@@ -19,12 +19,20 @@ class ThemeSetup {
 
 	function __invoke() {
 		$this->enablePostThumbnails();
+		$this->enableCustomLogo();
 		$this->enableLinkAnchors();
 		$this->registerMenus();
 	}
 
 	function enablePostThumbnails() {
 		add_theme_support("post-thumbnails");
+	}
+
+	function enableCustomLogo() {
+		add_theme_support("custom-logo", array(
+			"height" => "50",
+			"flex-width" => true,
+		));
 	}
 
 	function enableLinkAnchors() {
