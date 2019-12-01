@@ -21,10 +21,12 @@ class SloganLoop extends WP_Widget {
 	static $widget_id = "slogan-loop";
 
 	function __construct() {
+		$baseID = str_replace("-", "", self::$widget_id);
 		$opts = array(
-			"description" => "Displays custom text post types as slogans in a loop."
+			"description" => "Displays custom text post types as slogans in a loop.",
+			"classname" => "widget_" . $baseID . " %s",
 		);
-		parent::__construct(false, __(self::$widget_name), $opts);
+		parent::__construct($baseID, __(self::$widget_name), $opts);
 	}
 
 	function __invoke() {
@@ -49,7 +51,7 @@ class SloganLoop extends WP_Widget {
 	}
 
 	function widget($args, $instance) {
-		echo $args["before_widget"];
+		echo sprintf($args["before_widget"], $instance["style"]);
 
 		$posts = get_posts(array("post_type" => "slogan", "orderby" => "menu_order", "order" => "ASC")); ?>
 
@@ -68,4 +70,32 @@ class SloganLoop extends WP_Widget {
 
 		<?php echo $args["after_widget"];
 	}
+
+	function update($new_instance, $old_instance) {
+		$inst = $old_instance;
+		$inst["style"] = strip_tags($new_instance["style"]);
+		return $inst;
+	}
+
+	function form($instance) { ?>
+		<p>
+			<label
+				for="<?php echo $this->get_field_id("style"); ?>">Style:</label>
+
+			<select
+				name="<?php echo $this->get_field_name("style"); ?>"
+				id="<?php echo $this->get_field_id("style"); ?>">
+
+				<option value="">--- Empty ---</option>
+				<option
+					value="dark"<?php if ($instance["style"] == "dark") echo "selected" ?>>
+					Dark
+				</option>
+				<option
+					value="light"<?php if ($instance["style"] == "light") echo "selected" ?>>
+					Light
+				</option>
+			</select>
+		</p>
+	<?php }
 }

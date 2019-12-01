@@ -51,7 +51,6 @@ class Pagebox extends WP_Widget {
 	}
 
 	function update($new_instance, $old_instance) {
-
 		$inst = $old_instance;
 		$inst["page"] = strip_tags($new_instance["page"]);
 		$inst["style"] = strip_tags($new_instance["style"]);
@@ -86,13 +85,17 @@ class Pagebox extends WP_Widget {
 				for="<?php echo $this->get_field_id("style"); ?>">Style:</label>
 
 			<select
-				name="<?php echo $this->get_field_name("style"); ?>"
-				id="<?php echo $this->get_field_id("style"); ?>">
+					name="<?php echo $this->get_field_name("style"); ?>"
+					id="<?php echo $this->get_field_id("style"); ?>">
 
 				<option value="">--- Empty ---</option>
 				<option
-					value="dark"<?php if ($instance["style"] == "dark") echo "selected" ?>>
+						value="dark"<?php if ($instance["style"] == "dark") echo "selected" ?>>
 					Dark
+				</option>
+				<option
+						value="light"<?php if ($instance["style"] == "light") echo "selected" ?>>
+					Light
 				</option>
 			</select>
 		</p>
