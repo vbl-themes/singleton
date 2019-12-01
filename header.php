@@ -14,5 +14,8 @@
 							alt="<?php get_bloginfo("name"); ?>"
 							height="50"/></a>
 	<?php endif; ?>
-	<?php wp_nav_menu(array("menu" => "Main Menu")); ?>
+	<?php wp_nav_menu(array(
+		"menu" => "Main Menu",
+		"fallback_cb" => false,
+	)); ?>
 </header>

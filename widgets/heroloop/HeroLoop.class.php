@@ -74,6 +74,7 @@ class HeroLoop extends WP_Widget {
 				<?php wp_nav_menu(array(
 					"menu" => "Hero Icons",
 					"container" => null,
+					"fallback_cb" => false,
 				)) ?>>
 
 			</article>
