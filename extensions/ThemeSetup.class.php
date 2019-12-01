@@ -21,6 +21,7 @@ class ThemeSetup {
 		$this->enablePostThumbnails();
 		$this->enableCustomLogo();
 		$this->enableLinkAnchors();
+		$this->allowSVGUploads();
 		$this->registerMenus();
 	}
 
@@ -32,6 +33,7 @@ class ThemeSetup {
 		add_theme_support("custom-logo", array(
 			"height" => "50",
 			"flex-width" => true,
+			"flex-height" => true,
 		));
 	}
 
@@ -42,5 +44,12 @@ class ThemeSetup {
 	function registerMenus() {
 		register_nav_menu("main-menu", "Main Menu");
 		register_nav_menu("hero-icons", "Hero Icons");
+	}
+
+	function allowSVGUploads() {
+		add_filter("upload_mimes", function ($mimes) {
+			$mimes["svg"] = "image/svg";
+			return $mimes;
+		});
 	}
 }
