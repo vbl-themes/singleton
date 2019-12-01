@@ -63,7 +63,7 @@ class HeroLoop extends WP_Widget {
 				</p>
 
 				<p>
-					<?php for ($i = 0; $i < $count; $i++): ?>
+					<?php if ($count > 1) for ($i = 0; $i < $count; $i++): ?>
 						<a onclick="changePic(this.parentNode.parentNode.parentNode, <?php echo $i; ?>)"
 						   <?php if ($posts[$i]->ID === $post->ID): ?>class="active"<?php endif; ?>>
 							&#9135;
