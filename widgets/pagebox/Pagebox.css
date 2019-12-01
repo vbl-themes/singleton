@@ -15,6 +15,11 @@
  */
 
 article.dark {
-	background-color: #000;
-	color: #fff;
+	background-color: var(--color-dark);
+	color: var(--color-white);
+}
+
+article.light {
+	background-color: var(--color-light);
+	color: var(--color-white);
 }

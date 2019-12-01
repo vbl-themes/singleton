@@ -17,7 +17,7 @@
 section.widget_heroloop {
 	margin: 0;
 	display: grid;
-	background-color: #000;
+	background-color: var(--color-dark);
 }
 
 section.widget_heroloop article {
@@ -35,17 +35,12 @@ section.widget_heroloop article {
 }
 
 section.widget_heroloop article a {
-	color: #fff;
+	color: var(--color-white);
 	text-decoration: none;
-	font-weight: bold;
 }
 
 section.widget_heroloop article a.active {
-	color: orange;
-}
-
-section.widget_heroloop article a:hover {
-	cursor: pointer;
+	color: var(--color-light);
 }
 
 .hidden {
@@ -55,26 +50,30 @@ section.widget_heroloop article a:hover {
 
 section.widget_heroloop article p {
 	font-size: 2.5vw;
-	text-shadow: 1px 1px 1px #000;
-	color: #fff;
+	text-shadow: var(--shadow-light);
+	text-transform: uppercase;
+	color: var(--color-white);
 }
 
 section.widget_heroloop article ul {
 	padding: 0;
+	font-size: 1.5em;
 }
 
 section.widget_heroloop article ul a:hover {
-	color: #fff;
+	background-color: var(--opacity-lighter);
+	color: var(--color-light);
 }
 
 section.widget_heroloop article ul a {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	font-size: 1.5em;
-	color: orange;
+	background-color: var(--opacity-dark);
+	padding: 0.5em;
 }
 
-section.widget_heroloop article ul a i:before {
+section.widget_heroloop article ul a i._mi {
 	font-size: 3em;
+	margin: 0 0 0.3em 0;
 }

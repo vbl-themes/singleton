@@ -28,13 +28,26 @@ Tags: white, one-page, fixed-width
 Popular single-page layout theme that uses custom widgets for arranging block content.
 */
 
+:root {
+	--color-light: #ff8400;
+	--color-darker: #b2b2b2;
+	--color-dark: #666;
+	--color-white: #fff;
+	--opacity-dark: #66666680;
+	--opacity-lighter: #ffffffd9;
+	--opacity-light: #ffffffef;
+	--shadow-light: 0px 1px 3px #000;
+}
+
 body {
 	margin: 0;
+	font-family: Helvetica, Verdana, Arial, sans-serif;
 }
 
 header {
-	background-color: #fffc;
+	background-color: var(--opacity-light);
 	display: none;
+	padding: 0.5em;
 }
 
 header.sticky {
@@ -50,9 +63,18 @@ article {
 	padding: 1em;
 }
 
-section.emphasized {
-	background-color: #213275;
-	color: #fff;
+article.dark, section.dark {
+	background-color: var(--color-dark);
+	color: var(--color-white);
+}
+
+article.light, section.light {
+	background-color: var(--color-light);
+	color: var(--color-white);
+}
+
+a:hover {
+	cursor: pointer;
 }
 
 ul.menu {
@@ -67,8 +89,11 @@ ul.menu li {
 }
 
 ul.menu a {
-	color: blue;
+	color: var(--color-dark);
 	text-decoration: none;
-	font-variant: all-small-caps;
+	text-transform: uppercase;
 }
 
+ul.menu a:hover {
+	color: var(--color-light);
+}
